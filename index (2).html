@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TD Soccer Academy - Train Like You Play</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Oswald:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1A2A3A;
+            background: #FFFFFF;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header/Nav */
+        header {
+            background: white;
+            border-bottom: 1px solid #E0E0E0;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: #0F1F2E;
+            letter-spacing: -0.5px;
+        }
+        
+        .logo-small {
+            font-size: 11px;
+            color: #3A6B4A;
+            font-weight: 600;
+            margin-top: 2px;
+            letter-spacing: 1px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #1A2A3A;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .nav-links a:hover {
+            color: #3A6B4A;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0F1F2E 0%, #1A2A3A 100%);
+            color: white;
+            padding: 120px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(58, 107, 74, 0.08);
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 72px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -2px;
+            line-height: 1.1;
+        }
+        
+        .hero-tagline {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 36px;
+            color: #3A6B4A;
+            font-weight: 700;
+            margin-bottom: 30px;
+            letter-spacing: -0.5px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 45px;
+            opacity: 0.95;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.5;
+        }
+        
+        .cta-button {
+            background: #3A6B4A;
+            color: white;
+            border: none;
+            padding: 18px 45px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Montserrat', sans-serif;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            background: #2A5240;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(58, 107, 74, 0.2);
+        }
+        
+        .cta-button-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            margin-left: 15px;
+        }
+        
+        .cta-button-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 48px; }
+            .hero-tagline { font-size: 24px; }
+            .hero p { font-size: 18px; }
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+        
+        section h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 48px;
+            margin-bottom: 15px;
+            color: #0F1F2E;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+        
+        .section-subtitle {
+            color: #3A6B4A;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 40px;
+        }
+        
+        /* Corner Frame Signature Element */
+        .corner-frame {
+            position: relative;
+            padding: 30px;
+            border-left: 4px solid #3A6B4A;
+            border-top: 4px solid #3A6B4A;
+            margin: 20px 0;
+        }
+        
+        .corner-frame::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 30px;
+            height: 30px;
+            border-right: 4px solid #3A6B4A;
+            border-bottom: 4px solid #3A6B4A;
+        }
+        
+        /* About Section */
+        #about {
+            background: #F9F9F9;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-text h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 28px;
+            color: #0F1F2E;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        
+        .about-text p {
+            color: #555;
+            margin-bottom: 18px;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        
+        .values-list {
+            list-style: none;
+            margin-top: 25px;
+        }
+        
+        .values-list li {
+            padding: 14px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #555;
+            font-size: 15px;
+        }
+        
+        .values-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #3A6B4A;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .corner-frame h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            color: #0F1F2E;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        
+        .corner-frame p {
+            color: #3A4A5A;
+            margin-bottom: 18px;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+        
+        .corner-frame strong {
+            color: #0F1F2E;
+            display: block;
+            margin-top: 18px;
+            font-size: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .about-grid { grid-template-columns: 1fr; gap: 30px; }
+        }
+        
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .service-card {
+            background: white;
+            border: 1px solid #E0E0E0;
+            border-radius: 8px;
+            padding: 35px;
+            transition: all 0.3s;
+        }
+        
+        .service-card:hover {
+            box-shadow: 0 8px 24px rgba(27, 94, 32, 0.1);
+            border-color: #1B5E20;
+        }
+        
+        .service-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            color: #0F1F2E;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+        
+        .service-price {
+            font-size: 28px;
+            color: #3A6B4A;
+            font-weight: 800;
+            margin: 20px 0 8px;
+        }
+        
+        .service-note {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 20px;
+        }
+        
+        .service-card ul {
+            list-style: none;
+            margin-top: 20px;
+        }
+        
+        .service-card li {
+            padding: 8px 0;
+            color: #555;
+            font-size: 14px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .service-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #3A6B4A;
+        }
+        
+        @media (max-width: 1024px) {
+            .services-grid { grid-template-columns: 1fr; }
+        }
+        
+        /* How It Works */
+        #how-it-works {
+            background: #F9F9F9;
+        }
+        
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .step {
+            text-align: center;
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: #3A6B4A;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+        
+        .step h4 {
+            color: #0F1F2E;
+            font-size: 18px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .step p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 1024px) {
+            .steps-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        
+        @media (max-width: 768px) {
+            .steps-grid { grid-template-columns: 1fr; }
+        }
+        
+        /* About Me Section */
+        .aboutme-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .aboutme-image {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 8px;
+            margin: 0 auto;
+        }
+        
+        .aboutme-text h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 28px;
+            color: #0F1F2E;
+            margin-bottom: 8px;
+            font-weight: 800;
+        }
+        
+        .aboutme-title {
+            font-size: 16px;
+            color: #3A6B4A;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .aboutme-text p {
+            color: #555;
+            margin-bottom: 18px;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        
+        .credentials-list {
+            list-style: none;
+            margin-top: 25px;
+        }
+        
+        .credentials-list li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #555;
+            font-size: 15px;
+        }
+        
+        .credentials-list li::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: #3A6B4A;
+            font-size: 12px;
+        }
+        
+        .aboutme-highlight {
+            background: linear-gradient(135deg, #0F1F2E 0%, #1A2A3A 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+        
+        .aboutme-highlight h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+        
+        .aboutme-highlight p {
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 15px;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+        
+        @media (max-width: 768px) {
+            .aboutme-grid { grid-template-columns: 1fr; gap: 30px; }
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #0F1F2E 0%, #1A2A3A 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            border-radius: 8px;
+            margin: 60px 0;
+        }
+        
+        .cta-section h2 {
+            color: white;
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        /* Footer */
+        footer {
+            background: #0F1F2E;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            font-size: 14px;
+        }
+        
+        footer a {
+            color: #3A6B4A;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div>
+                    <div class="logo">TD SOCCER</div>
+                    <div class="logo-small">academy</div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#how-it-works">Process</a></li>
+                    <li><a href="#about-teagan">Meet Teagan</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>TD SOCCER ACADEMY</h1>
+            <div class="hero-tagline">Train Like You Play</div>
+            <p>Elite 1-on-1 coaching designed for serious athletes. Personalized development. Game-ready training. Built by a D1 player who knows what it takes.</p>
+            <button class="cta-button" onclick="scrollTo('booking')">Book Your First Session</button>
+            <button class="cta-button cta-button-secondary" onclick="scrollTo('about')">Learn More</button>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>Your Complete Development System</h2>
+            <p class="section-subtitle">360° coaching for serious players</p>
+            
+            <div class="about-grid">
+                <div class="about-text">
+                    <h3>Built Around You</h3>
+                    <p>Every player is different. Your development plan is personalized—built specifically for your goals, learning style, strengths, and areas to improve.</p>
+                    <ul class="values-list">
+                        <li><strong>Technical Mastery:</strong> Ball control, passing, shooting—D1-level fundamentals</li>
+                        <li><strong>Tactical Intelligence:</strong> Game reading, positioning, decision-making under pressure</li>
+                        <li><strong>Mental Resilience:</strong> Confidence, competitive edge, performance in big moments</li>
+                        <li><strong>Physical Development:</strong> Speed, strength, agility, injury prevention</li>
+                    </ul>
+                </div>
+                <div class="corner-frame">
+                    <strong>What Makes Us Different</strong>
+                    
+                    <strong style="display: block; margin-top: 20px; color: #1A3A52;">Practice Like a Game</strong>
+                    <p>Every session uses real-game scenarios, pressure moments, and tactical complexity. When match day comes, you're ready because you've trained like this.</p>
+                    
+                    <strong style="display: block; color: #1A3A52;">Personalized Sessions</strong>
+                    <p>No cookie-cutter drills. Your sessions are designed around your specific needs, your club's formation, and your recruiting timeline.</p>
+                    
+                    <strong style="display: block; color: #1A3A52;">Expert Guidance</strong>
+                    <p>I've been through the D1 recruiting process. I know what college coaches look for. I know what it takes to get there. That's built into every session.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <h2>Coaching Packages</h2>
+            <p class="section-subtitle">Flexible options designed for your progress</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Drop-In Session</h3>
+                    <div class="service-price">$50</div>
+                    <div class="service-note">per 60-minute session</div>
+                    <ul>
+                        <li>1-on-1 coaching</li>
+                        <li>Personalized drills</li>
+                        <li>Flexible scheduling</li>
+                        <li>Video optional</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <h3>5-Session Package</h3>
+                    <div class="service-price">$350</div>
+                    <div class="service-note">5 × 60-minute sessions</div>
+                    <ul>
+                        <li>5 coaching sessions</li>
+                        <li>Video filming included</li>
+                        <li>Session review</li>
+                        <li>Progress tracking</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Complete Program</h3>
+                    <div class="service-price">$600</div>
+                    <div class="service-note">10 × 60-minute sessions</div>
+                    <ul>
+                        <li>10 coaching sessions</li>
+                        <li>Weekly video analysis</li>
+                        <li>Recruiting highlights</li>
+                        <li>Progress report</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- How It Works -->
+    <section id="how-it-works">
+        <div class="container">
+            <h2>The TD Process</h2>
+            <p class="section-subtitle">How every session is structured</p>
+            
+            <div class="steps-grid">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Assess</h4>
+                    <p>Warm-up and quick assessment of your focus for today—what do you want to work on?</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Personalize</h4>
+                    <p>Technical drills tailored to your specific needs. 1v1, 2v2, game-like scenarios.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Practice</h4>
+                    <p>Real-game pressure situations. You train like you play—decisions, positioning, execution.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>Game Situation</h4>
+                    <p>Match-intensity scenarios with pressure and consequence. This is where you prove it.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h4>1-on-1 Contact</h4>
+                    <p>At-home development plan. Exercises you can do on your own to keep progressing between sessions.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">6</div>
+                    <h4>Video Review</h4>
+                    <p>Watch footage together. See exactly what you did well, what to improve, how it translates to matches.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Teagan Section -->
+    <section id="about-teagan">
+        <div class="container">
+            <h2>Meet Your Coach</h2>
+            <p class="section-subtitle">D1 player. Recruited coach. System builder.</p>
+            
+            <div class="aboutme-grid">
+                <div>
+                    <img src="teagan.jpg" alt="Teagan Dunne" class="aboutme-image" onerror="this.style.display='none'">
+                </div>
+                <div class="aboutme-text">
+                    <h3>Teagan Dunne</h3>
+                    <div class="aboutme-title">Head Coach, TD Soccer Academy</div>
+                    
+                    <p>I've been through the system. Started at the highest club levels in St. Louis with FC and Scott Gallagher, then played college at the highest level. I'm a D1 soccer player—recruited, trained, and developed through one of the most competitive pipelines in the country.</p>
+                    
+                    <p>More importantly, I know what college coaches are looking for. Not just how good you are on the field, but how you think, how you move off the ball, how you perform under pressure, and how you evolve as a player.</p>
+                    
+                    <ul class="credentials-list">
+                        <li>St. Louis native | St. Louis FC & St. Louis Scott Gallagher</li>
+                        <li>Bellarmine Freshman Best 11</li>
+                        <li>Old Dominion University | 3-Year Starter</li>
+                        <li>Recruited by elite D1 programs</li>
+                        <li>Know the recruiting process inside-out</li>
+                        <li>Trained with top coaches and systems</li>
+                    </ul>
+                    
+                    <div class="aboutme-highlight">
+                        <h4>Why I Coach</h4>
+                        <p>Every player has the potential to be great. Most just don't have the right system, the right coaching, or the personalized attention to unlock it.</p>
+                        <p>That's what TD is about. I'm not here to run generic drills or treat every player the same. I'm here to see your potential, understand your goals, and build a development plan that actually works—because I've lived it.</p>
+                        <p>When you train with me, you're training with someone who understands the full journey. From your first touch to your recruiting tape. From your technical weaknesses to your mental edge.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <div class="container">
+        <div class="cta-section">
+            <h2 id="booking">Ready to Level Up?</h2>
+            <p>Book a free 15-minute consultation to discuss your goals and find the right coaching plan.</p>
+            <button class="cta-button" onclick="openCalendly()">Schedule Free Consultation</button>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 TD Soccer Academy. Train Like You Play.</p>
+            <p style="margin-top: 10px; font-size: 12px; opacity: 0.8;">
+                <a href="https://instagram.com">Instagram</a> • <a href="#">Contact</a> • <a href="#">Book a Session</a>
+            </p>
+        </div>
+    </footer>
+    
+    <script>
+        function scrollTo(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+        
+        function openCalendly() {
+            window.open('https://calendly.com/', '_blank');
+        }
+    </script>
+</body>
+</html>
