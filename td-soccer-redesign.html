@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TD Soccer Academy - 1-on-1 Coaching</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #fff;
+            background: #1a2a4a;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            border-bottom: 1px solid #2d4a6a;
+            padding: 24px 0;
+            position: sticky;
+            top: 0;
+            background: #0f1a2e;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #b0c4de;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .nav-links a:hover {
+            color: #5ab77a;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+        }
+        
+        /* Hero */
+        .hero {
+            padding: 100px 0 80px;
+            text-align: center;
+            background: linear-gradient(135deg, #0f1a2e 0%, #1a2a4a 100%);
+        }
+        
+        .hero h1 {
+            font-size: 52px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            color: #fff;
+        }
+        
+        .hero .tagline {
+            font-size: 18px;
+            color: #b0c4de;
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            background: #3d7a52;
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: 'Inter', sans-serif;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            background: #2d5a3d;
+        }
+        
+        .cta-button-secondary {
+            background: transparent;
+            color: #fff;
+            border: 1px solid #fff;
+            margin-left: 12px;
+        }
+        
+        .cta-button-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 36px; }
+            .hero .tagline { font-size: 16px; }
+        }
+        
+        /* Sections */
+        section {
+            padding: 70px 0;
+            border-top: 1px solid #2d4a6a;
+            background: #1a2a4a;
+        }
+        
+        section h2 {
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+        
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+        
+        .about-left h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #fff;
+        }
+        
+        .about-left p {
+            color: #d0d0d0;
+            margin-bottom: 20px;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+        
+        .highlight-box {
+            background: #0f1a2e;
+            border-left: 3px solid #5ab77a;
+            padding: 24px;
+            margin-top: 24px;
+            border-radius: 2px;
+        }
+        
+        .highlight-box h4 {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+        
+        .highlight-box p {
+            font-size: 14px;
+            color: #b0c4de;
+            margin: 0;
+        }
+        
+        .feature-list {
+            list-style: none;
+            margin-top: 24px;
+        }
+        
+        .feature-list li {
+            padding: 12px 0;
+            padding-left: 24px;
+            position: relative;
+            color: #d0d0d0;
+            font-size: 14px;
+        }
+        
+        .feature-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #5ab77a;
+            font-weight: 600;
+        }
+        
+        @media (max-width: 768px) {
+            .about-grid { grid-template-columns: 1fr; gap: 32px; }
+        }
+        
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        
+        .service-card {
+            background: #0f1a2e;
+            border: 1px solid #2d4a6a;
+            padding: 28px;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+        
+        .service-card:hover {
+            border-color: #5ab77a;
+            box-shadow: 0 4px 12px rgba(90, 183, 122, 0.15);
+        }
+        
+        .service-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #fff;
+        }
+        
+        .service-price {
+            font-size: 32px;
+            font-weight: 700;
+            color: #5ab77a;
+            margin-bottom: 4px;
+        }
+        
+        .service-detail {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 20px;
+        }
+        
+        .service-card ul {
+            list-style: none;
+            margin-top: 16px;
+        }
+        
+        .service-card li {
+            padding: 8px 0;
+            color: #b0c4de;
+            font-size: 13px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .service-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #5ab77a;
+            font-weight: 600;
+        }
+        
+        @media (max-width: 1024px) {
+            .services-grid { grid-template-columns: 1fr; }
+        }
+        
+        /* Process */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        
+        .process-step {
+            text-align: center;
+        }
+        
+        .step-num {
+            width: 44px;
+            height: 44px;
+            background: #5ab77a;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin: 0 auto 12px;
+            font-size: 18px;
+        }
+        
+        .process-step h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+        
+        .process-step p {
+            font-size: 13px;
+            color: #b0c4de;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 1024px) {
+            .process-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        
+        @media (max-width: 768px) {
+            .process-grid { grid-template-columns: 1fr; }
+        }
+        
+        /* Coach Section */
+        .coach-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+        
+        .coach-image {
+            width: 100%;
+            border-radius: 4px;
+            background: #0f1a2e;
+            aspect-ratio: 1;
+            object-fit: cover;
+        }
+        
+        .coach-text h3 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: #fff;
+        }
+        
+        .coach-title {
+            font-size: 14px;
+            color: #5ab77a;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+        
+        .coach-text p {
+            color: #d0d0d0;
+            margin-bottom: 16px;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+        
+        .credentials {
+            list-style: none;
+            margin-top: 24px;
+        }
+        
+        .credentials li {
+            padding: 8px 0;
+            color: #b0c4de;
+            font-size: 13px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .credentials li::before {
+            content: '•';
+            position: absolute;
+            left: 6px;
+            color: #5ab77a;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .coach-grid { grid-template-columns: 1fr; gap: 32px; }
+        }
+        
+        /* Booking Section */
+        .booking-section {
+            padding: 70px 0;
+            border-top: 1px solid #2d4a6a;
+            background: #1a2a4a;
+        }
+        
+        .booking-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .booking-header h2 {
+            margin-bottom: 12px;
+            color: #fff;
+        }
+        
+        .booking-header p {
+            font-size: 16px;
+            color: #b0c4de;
+        }
+        
+        .calendly-embed {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Footer */
+        footer {
+            background: #0f1a2e;
+            border-top: 1px solid #2d4a6a;
+            padding: 40px 0;
+            text-align: center;
+            font-size: 13px;
+            color: #888;
+        }
+        
+        footer a {
+            color: #5ab77a;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">TD Soccer Academy</div>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#process">Process</a></li>
+                    <li><a href="#coach">Coach</a></li>
+                    <li><a href="#booking">Book</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1>Elite 1-on-1 Soccer Coaching</h1>
+            <p class="tagline">Personalized training from a D1 player. Game-ready development. Built for serious athletes.</p>
+            <button class="cta-button" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Schedule a Session</button>
+            <button class="cta-button cta-button-secondary" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Learn More</button>
+        </div>
+    </section>
+    
+    <!-- About -->
+    <section id="about">
+        <div class="container">
+            <h2>Your Complete Development Plan</h2>
+            
+            <div class="about-grid">
+                <div class="about-left">
+                    <h3>Built Around Your Goals</h3>
+                    <p>Every player is different. Your sessions are personalized—technical work, tactical growth, mental edge, and physical development all tailored to where you are and where you want to be.</p>
+                    
+                    <ul class="feature-list">
+                        <li>Technical mastery: ball control, passing, shooting</li>
+                        <li>Tactical intelligence: game reading, positioning, decision-making</li>
+                        <li>Mental resilience: confidence, competitive edge, pressure moments</li>
+                        <li>Physical development: speed, strength, agility</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <div class="highlight-box">
+                        <h4>Practice Like a Game</h4>
+                        <p>Real-game scenarios with pressure. When match day comes, you're ready because you've trained exactly like this.</p>
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <h4>Personalized Sessions</h4>
+                        <p>No cookie-cutter drills. Built around your specific needs, your formation, and your recruiting timeline.</p>
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <h4>Expert Guidance</h4>
+                        <p>I've been through D1 recruiting. I know what college coaches look for. That's built into every session.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Services -->
+    <section id="services">
+        <div class="container">
+            <h2>Coaching Packages</h2>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Drop-In Session</h3>
+                    <div class="service-price">$50</div>
+                    <div class="service-detail">60 minutes</div>
+                    <ul>
+                        <li>1-on-1 coaching</li>
+                        <li>Personalized drills</li>
+                        <li>Flexible scheduling</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <h3>5-Session Package</h3>
+                    <div class="service-price">$225</div>
+                    <div class="service-detail">5 × 60 min ($45/session)</div>
+                    <ul>
+                        <li>5 coaching sessions</li>
+                        <li>Video filming included</li>
+                        <li>Progress tracking</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <h3>10-Session Program</h3>
+                    <div class="service-price">$400</div>
+                    <div class="service-detail">10 × 60 min ($40/session)</div>
+                    <ul>
+                        <li>10 coaching sessions</li>
+                        <li>Weekly video analysis</li>
+                        <li>Recruiting highlights</li>
+                        <li>Progress report</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Process -->
+    <section id="process">
+        <div class="container">
+            <h2>How Each Session Works</h2>
+            
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="step-num">1</div>
+                    <h4>Assess</h4>
+                    <p>Quick warm-up and assessment. What do you want to improve today?</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-num">2</div>
+                    <h4>Personalize</h4>
+                    <p>Technical drills built for your needs. 1v1, 2v2, game-like scenarios.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-num">3</div>
+                    <h4>Practice</h4>
+                    <p>Real-game pressure. Train like you play—decisions, positioning, execution.</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-num">4</div>
+                    <h4>Match Intensity</h4>
+                    <p>Game scenarios with pressure. This is where you prove it.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-num">5</div>
+                    <h4>Home Plan</h4>
+                    <p>Development exercises for the week. Progress between sessions.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-num">6</div>
+                    <h4>Video Review</h4>
+                    <p>Watch footage together. See exactly what to improve and how it translates to matches.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Coach -->
+    <section id="coach">
+        <div class="container">
+            <h2>Meet Your Coach</h2>
+            
+            <div class="coach-grid">
+                <img src="./teagan.jpg" alt="Teagan Dunne" class="coach-image">
+                
+                <div class="coach-text">
+                    <h3>Teagan Dunne</h3>
+                    <div class="coach-title">Head Coach, TD Soccer Academy</div>
+                    
+                    <p>I've been through the system. Started at the highest club levels in St. Louis with FC and Scott Gallagher, then played college soccer at the highest level. I'm a D1 player—recruited, trained, and developed through one of the most competitive pipelines in the country.</p>
+                    
+                    <p>I know what college coaches are looking for. Not just how good you are on the field, but how you think, move off the ball, and perform under pressure.</p>
+                    
+                    <ul class="credentials">
+                        <li>St. Louis FC & St. Louis Scott Gallagher</li>
+                        <li>Bellarmine University - Freshman Best 11</li>
+                        <li>Old Dominion University - 3-Year Starter, D1</li>
+                        <li>Recruited by elite D1 programs</li>
+                        <li>Trained with top coaches and systems</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Booking -->
+    <section id="booking" class="booking-section">
+        <div class="container">
+            <div class="booking-header">
+                <h2>Ready to Start?</h2>
+                <p>Schedule a session or free consultation</p>
+            </div>
+            
+            <div class="calendly-embed" id="calendly-placeholder">
+                <p style="text-align: center; color: #b0c4de; padding: 40px; font-size: 15px;">
+                    Calendly booking coming soon. <br>Contact to inquire about sessions in the meantime.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 TD Soccer Academy</p>
+            <p style="margin-top: 10px;">
+                <a href="https://instagram.com">Instagram</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
