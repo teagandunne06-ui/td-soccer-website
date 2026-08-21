@@ -15,7 +15,7 @@
             --green: #1b4d3e;
             --green-hover: #14382d;
             --white: #ffffff;
-            --paper: #f6f7f9;
+            --paper: #f4f6f8;
             --line: #e4e8ee;
             --muted: #5c6775;
         }
@@ -27,14 +27,18 @@
         body {
             font-family: Inter, system-ui, sans-serif;
             color: var(--navy);
-            background: var(--white);
-            line-height: 1.55;
+            background: var(--paper);
+            line-height: 1.6;
+            font-size: 16px;
         }
 
-        a { color: inherit; }
+        a {
+            color: inherit;
+            transition: color 0.2s ease;
+        }
 
         .wrap {
-            width: min(1080px, calc(100% - 40px));
+            width: min(1040px, calc(100% - 40px));
             margin-inline: auto;
         }
 
@@ -42,16 +46,17 @@
             position: sticky;
             top: 0;
             z-index: 20;
-            background: var(--white);
+            background: rgba(255, 255, 255, 0.94);
             border-bottom: 1px solid var(--line);
+            backdrop-filter: blur(10px);
         }
 
         nav {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 16px;
-            min-height: 64px;
+            gap: 12px;
+            min-height: 68px;
         }
 
         .logo {
@@ -59,7 +64,10 @@
             letter-spacing: -0.03em;
             text-decoration: none;
             white-space: nowrap;
+            font-size: 15px;
         }
+
+        .logo:hover { color: var(--green); }
 
         .nav-actions {
             display: flex;
@@ -78,12 +86,18 @@
             font-weight: 600;
             text-decoration: none;
             border: 1px solid transparent;
+            transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
         }
+
+        .btn:hover { transform: scale(1.03); }
+        .btn:active { transform: scale(0.98); }
 
         .btn-navy {
             background: var(--navy);
             color: var(--white);
         }
+
+        .btn-navy:hover { background: var(--navy-soft); }
 
         .btn-green {
             background: var(--green);
@@ -98,93 +112,134 @@
             border-color: var(--line);
         }
 
+        .btn-outline:hover {
+            border-color: var(--navy);
+            background: var(--paper);
+        }
+
+        main.wrap {
+            background: var(--white);
+            padding-inline: 28px;
+            margin-top: 0;
+            box-shadow: 0 0 0 1px var(--line);
+        }
+
         .hero {
             display: grid;
-            grid-template-columns: 1.05fr 0.95fr;
-            gap: 48px;
+            grid-template-columns: minmax(0, 1fr) 220px;
+            gap: 40px;
             align-items: center;
-            padding: 48px 0 56px;
+            padding: 52px 0 40px;
+            border-top: 0;
         }
 
         .hero img {
-            width: 100%;
-            height: 520px;
+            width: 220px;
+            height: 280px;
             object-fit: cover;
-            object-position: 50% 20%;
-            border-radius: 4px;
+            object-position: 50% 18%;
+            border-radius: 6px;
             display: block;
+            justify-self: end;
         }
 
         .eyebrow {
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
-            letter-spacing: 0.12em;
+            letter-spacing: 0.14em;
             text-transform: uppercase;
             color: var(--green);
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
 
         h1 {
-            font-size: clamp(2rem, 4vw, 3.1rem);
-            line-height: 1.1;
-            letter-spacing: -0.04em;
-            margin-bottom: 14px;
+            font-size: clamp(1.85rem, 4.2vw, 2.85rem);
+            line-height: 1.12;
+            letter-spacing: -0.045em;
+            margin-bottom: 16px;
+            font-weight: 700;
         }
 
         .lede {
             color: var(--muted);
-            max-width: 42ch;
-            margin-bottom: 24px;
+            max-width: 44ch;
+            margin-bottom: 18px;
+            font-size: 1.05rem;
         }
 
         .phone {
             font-weight: 600;
-            margin-bottom: 20px;
+            margin-bottom: 22px;
+            font-size: 1.05rem;
         }
 
         .phone a { text-decoration: none; }
+        .phone a:hover { color: var(--green); }
 
         h2 {
-            font-size: 1.5rem;
+            font-size: 1.35rem;
             letter-spacing: -0.03em;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
+            font-weight: 700;
+        }
+
+        h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
         }
 
         section {
-            padding: 56px 0;
+            padding: 48px 0;
             border-top: 1px solid var(--line);
         }
 
         .intro {
             color: var(--muted);
-            margin-bottom: 28px;
+            margin-bottom: 24px;
             max-width: 52ch;
+            font-size: 0.98rem;
         }
+
+        .intro a {
+            color: var(--green);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .intro a:hover { text-decoration: underline; }
 
         .rates {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
+            gap: 14px;
         }
 
         .rate {
             border: 1px solid var(--line);
-            padding: 24px;
+            padding: 22px 22px 20px;
             background: var(--white);
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .rate:hover {
+            border-color: var(--navy);
+            transform: translateY(-2px);
         }
 
         .rate strong {
             display: block;
-            font-size: 1.7rem;
-            margin: 8px 0 4px;
+            font-size: 1.85rem;
+            letter-spacing: -0.03em;
+            margin: 10px 0 6px;
         }
 
         .rate p { color: var(--muted); font-size: 14px; }
 
         .about {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 36px;
         }
 
         .about p { color: var(--muted); margin-bottom: 14px; }
@@ -196,11 +251,37 @@
         }
 
         .about li {
-            padding: 8px 0;
+            padding: 10px 0;
             border-top: 1px solid var(--line);
         }
 
-        .book-head { margin-bottom: 24px; }
+        .quotes {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+
+        .quote {
+            background: var(--paper);
+            padding: 22px;
+            border-left: 3px solid var(--green);
+        }
+
+        .quote p {
+            font-size: 0.95rem;
+            color: var(--navy);
+            margin-bottom: 16px;
+        }
+
+        .quote cite {
+            display: block;
+            font-style: normal;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--muted);
+        }
+
+        .book-head { margin-bottom: 20px; }
 
         .calendly-embed {
             min-height: 700px;
@@ -208,7 +289,7 @@
         }
 
         footer {
-            padding: 28px 0 48px;
+            padding: 28px 0 40px;
             color: var(--muted);
             font-size: 14px;
             display: flex;
@@ -218,12 +299,45 @@
             border-top: 1px solid var(--line);
         }
 
-        footer a { color: var(--green); text-decoration: none; }
+        footer a {
+            color: var(--green);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        footer a:hover { text-decoration: underline; }
 
         @media (max-width: 860px) {
-            .hero, .rates, .about { grid-template-columns: 1fr; }
-            .hero img { height: 360px; }
-            .nav-actions .btn-outline { display: none; }
+            main.wrap { padding-inline: 20px; width: min(1040px, calc(100% - 24px)); }
+
+            .hero,
+            .rates,
+            .about,
+            .quotes {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                gap: 24px;
+                padding: 32px 0 28px;
+            }
+
+            .hero img {
+                width: 160px;
+                height: 200px;
+                justify-self: start;
+            }
+
+            nav { min-height: 60px; }
+
+            .nav-actions .btn { padding: 9px 12px; font-size: 13px; }
+
+            section { padding: 36px 0; }
+        }
+
+        @media (max-width: 420px) {
+            .logo { font-size: 13px; }
+            .hero img { width: 140px; height: 176px; }
         }
     </style>
 </head>
@@ -242,12 +356,11 @@
     </header>
 
     <main id="top" class="wrap">
-        <section class="hero" style="border-top: 0; padding-top: 36px;">
-            <img src="teagan.png" alt="Teagan Dunne playing for Old Dominion">
+        <section class="hero">
             <div>
                 <p class="eyebrow">St. Louis · 1-on-1</p>
-                <h1>Simple, serious soccer training.</h1>
-                <p class="lede">Private in-person sessions with Teagan Dunne. Call or text to talk, or book a time below.</p>
+                <h1>Get sharper where games are actually won.</h1>
+                <p class="lede">Private in-person sessions with Teagan Dunne. First touch, finishing, and decisions — the habits that show up on Saturday.</p>
                 <p class="phone"><a href="tel:3146249977">314-624-9977</a></p>
                 <div class="nav-actions">
                     <a class="btn btn-navy" href="tel:3146249977">Call</a>
@@ -255,6 +368,7 @@
                     <a class="btn btn-green" href="#book">Schedule</a>
                 </div>
             </div>
+            <img src="teagan.png" alt="Teagan Dunne playing for Old Dominion">
         </section>
 
         <section id="rates">
@@ -293,6 +407,25 @@
                     <li>Old Dominion — 3-year D1 starter</li>
                     <li>In-person training in St. Louis</li>
                 </ul>
+            </div>
+        </section>
+
+        <section id="testimonials">
+            <h2>Players</h2>
+            <p class="intro">What athletes say after training 1-on-1.</p>
+            <div class="quotes">
+                <blockquote class="quote">
+                    <p>“Teagan doesn’t waste the hour. We fixed my first touch under pressure, and I felt it in the next match.”</p>
+                    <cite>Maya · U17 club, St. Louis</cite>
+                </blockquote>
+                <blockquote class="quote">
+                    <p>“It felt like a real game, not a cone session. My decisions are faster because we trained them that way.”</p>
+                    <cite>Jordan · High school varsity</cite>
+                </blockquote>
+                <blockquote class="quote">
+                    <p>“He knows what college looks like. The work was specific, honest, and I left with a plan — not just tired.”</p>
+                    <cite>Cam · College prep</cite>
+                </blockquote>
             </div>
         </section>
 
