@@ -207,7 +207,14 @@
             font-weight: 600;
         }
 
-        .intro a:hover { text-decoration: underline; }
+        .intro a:hover,
+        .copy a:hover { text-decoration: underline; }
+
+        .copy a {
+            color: var(--green);
+            text-decoration: none;
+            font-weight: 600;
+        }
 
         .rates {
             display: grid;
@@ -240,6 +247,13 @@
             display: grid;
             grid-template-columns: 1.1fr 0.9fr;
             gap: 36px;
+        }
+
+        .copy { max-width: 62ch; }
+
+        .copy p {
+            color: var(--muted);
+            margin-bottom: 14px;
         }
 
         .about p { color: var(--muted); margin-bottom: 14px; }
@@ -393,20 +407,20 @@
             </div>
         </section>
 
+        <section id="groups">
+            <h2>Group Training</h2>
+            <div class="copy">
+                <p>I also offer small group sessions tailored to your team’s or training group’s needs. Custom pricing based on group size and session frequency.</p>
+                <p>Interested in group training? Call or text <a href="tel:3146249977">314-624-9977</a> to discuss pricing and availability.</p>
+            </div>
+        </section>
+
         <section id="about">
             <h2>Coach</h2>
-            <p class="intro">Teagan Dunne · TD Soccer Academy</p>
-            <div class="about">
-                <div>
-                    <p>St. Louis native. Club soccer at St. Louis FC and Scott Gallagher, then college at Bellarmine and Old Dominion as a D1 starter.</p>
-                    <p>Sessions stay simple: first touch, finishing, and decisions that show up on game day. No crowded clinics.</p>
-                </div>
-                <ul>
-                    <li>St. Louis FC &amp; Scott Gallagher</li>
-                    <li>Bellarmine — Freshman Best 11</li>
-                    <li>Old Dominion — 3-year D1 starter</li>
-                    <li>In-person training in St. Louis</li>
-                </ul>
+            <div class="copy">
+                <p>I've been in and around the game my whole life. High school, club, college, and professional experience have taught me what it takes to develop as a player. Now that I'm done competing, I'm committed to sharing that knowledge with the next generation.</p>
+                <p>I pride myself on a full 360-degree approach with every athlete—technical skill, tactical awareness, mental edge, and physical preparation. It shows in the results.</p>
+                <p>My coaching isn't about crowded clinics or generic drills. It's personalized training designed around your goals, your pace, your ceiling. You get what you put in.</p>
             </div>
         </section>
 
